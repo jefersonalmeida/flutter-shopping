@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:shopping/ui/shared/widgets/progress-indicator.widget.dart';
+import 'package:shopping/ui/shared/widgets/generic-progress-indicator.widget.dart';
 
 class LoaderWidget extends StatelessWidget {
   final object;
@@ -11,7 +11,7 @@ class LoaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     if (object == null)
       return Center(
-        child: ProgressIndicator(),
+        child: GenericProgressIndicator(),
       );
 
     if (object.length == 0)

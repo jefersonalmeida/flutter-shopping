@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shopping/models/product-list-item.model.dart';
+import 'package:shopping/ui/android/pages/product.page.dart';
+import 'package:shopping/ui/shared/widgets/add-cart.widget.dart';
 
 class ProductCardWidget extends StatelessWidget {
   final ProductListItemModel item;
@@ -9,7 +11,8 @@ class ProductCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final price = new NumberFormat('#,##0.00', 'pt_BR');
+    final price = new NumberFormat("#,##0.00", "pt_BR");
+
     return Container(
       margin: EdgeInsets.all(5),
       width: 240,
@@ -22,16 +25,30 @@ class ProductCardWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Container(
-            width: 240,
-            height: 240,
-            decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.05),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(5),
-                topRight: Radius.circular(5),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProductPage(
+                    tag: item.tag,
+                  ),
+                ),
+              );
+            },
+            child: Container(
+              width: 240,
+              height: 240,
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.05),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(5),
+                  topRight: Radius.circular(5),
+                ),
+                image: DecorationImage(
+                  image: NetworkImage(item.image),
+                ),
               ),
-              image: DecorationImage(image: NetworkImage(item.image)),
             ),
           ),
           SizedBox(
@@ -81,14 +98,17 @@ class ProductCardWidget extends StatelessWidget {
                 Container(
                   width: 120,
                   child: Text(
-                    'R\$ ${price.format(item.price)}',
+                    "R\$ ${price.format(item.price)}",
                     style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).primaryColor),
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Theme
+                          .of(context)
+                          .primaryColor,
+                    ),
                   ),
                 ),
-                // AddToCart(item: item),
+                AddCartWidget(item: item),
               ],
             ),
           ),

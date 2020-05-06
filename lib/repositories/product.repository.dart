@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:shopping/models/product-details.model.dart';
 import 'package:shopping/models/product-list-item.model.dart';
 import 'package:shopping/settings.dart';
 
@@ -19,9 +20,9 @@ class ProductRepository {
         .toList();
   }
 
-  Future<ProductListItemModel> get(String tag) async {
+  Future<ProductDetailsModel> get(String tag) async {
     var url = '${Settings.apiUrl}/v1/products/$tag';
     Response response = await Dio().get(url);
-    return ProductListItemModel.fromJson(response.data);
+    return ProductDetailsModel.fromJson(response.data);
   }
 }

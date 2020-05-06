@@ -15,28 +15,28 @@ class HomePage extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             SizedBox(
-              height: 60,
+              height: 40,
             ),
             Text(
               "Categorias",
               style: Theme.of(context).textTheme.headline,
             ),
-            SizedBox(
+            /*SizedBox(
               height: 10,
-            ),
+            ),*/
             CategoryListWidget(
               categories: bloc.categories,
             ),
-            SizedBox(
+            /*SizedBox(
               height: 20,
-            ),
+            ),*/
             Text(
               'Mais Vendidos',
               style: Theme.of(context).textTheme.headline,
             ),
-            SizedBox(
+            /*SizedBox(
               height: 10,
-            ),
+            ),*/
             ProductListWidget(
               products: bloc.products,
             ),
