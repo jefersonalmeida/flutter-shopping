@@ -53,7 +53,7 @@ class TabsPage extends StatelessWidget {
             ),
           ),
           Tab(
-            icon: new Icon(Icons.perm_identity),
+            icon: new Icon(Icons.person),
           ),
         ],
         labelColor: Theme.of(context).primaryColor,
